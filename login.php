@@ -1,3 +1,31 @@
+<?php
+	using("connect.php");
+	session_start();
+	
+	if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form      
+      $username = mysqli_real_escape_string($db,$_POST['username']);
+      $password = mysqli_real_escape_string($db,$_POST['password']); 
+      
+      $sql = "SELECT id FROM registered natural join user WHERE username = '$username' and password = '$password'";
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row		
+      if($count == 1) {
+         session_register("username");
+         $_SESSION['login_user'] = $username;
+         
+         header("location: index.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -7,11 +35,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-body {
-	background-color: #F1F2F2;
-}
-</style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -21,8 +44,8 @@ body {
 </head>
 
 <body>
-<div align="center" class="container">
-<header><img src="images/Imago Gratia.png" width="350" alt=""/></header>
+<div class="container">
+<header class="text-center"><img src="images/Imago Gratia.png" width="350" alt=""/></header>
 <br><br><br><input style="width: 200px" name="useremail" type="textfield" id="textfield" placeholder="Username/E-Mail">
 <br><br><input style="width: 200px" name="password" type="password" id="password" placeholder="Password">
 <br><br><br>
