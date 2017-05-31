@@ -18,7 +18,7 @@
     <![endif]-->
 </head>
 <body>
-<div class="container">
+<div class="container"> 
 	<!-- header -->
 	<div class="page-header" style="margin-top:0"> <img src="images/Imago Gratia.png" width="350" alt=""/> </div>
 	
@@ -35,7 +35,7 @@
 			<div class="nav navbar-right" style="margin-right:5px">
 				<button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In</button>
 				<div class="dropdown-menu"  style="padding:10px;">
-					<form>
+					<form method="post" action="login.php">
 						<div class="form-group">
 							<label for="user">Email/username</label>
 							<input type="text" name="user" class="form-control">
@@ -85,9 +85,8 @@
 		<div class="col-lg-12">
 			<h3>Realize your IMG-nation</h3>
 			<p>Imago Gratia provides the opportunity for you to realize your ideas and imagination with just some simple steps</p>
-			<img src="images/HowItWorks-08.png" width="100%" alt=""/>
-		</div>
-	</div>	
+			<img src="images/HowItWorks-08.png" width="100%" alt=""/> </div>
+	</div>
 	<div class="row info">
 		<div class="row">
 			<div class="col-lg-4 col-sm-12 text-center">
