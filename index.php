@@ -85,10 +85,16 @@
 
     <!-- button -->
     <div class="row" style="margin-top:10px;">
-        <div class="col-lg-6 col-sm-12"><a href="#"><img src="images/Button-01.png" alt="" width="100%" class="btn-reg"></a>
+        <div class="col-lg-6 col-sm-12">
+            <a href="clientregister.html">
+                <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
+            </a>
         </div>
-        <div class="col-lg-6 col-sm-12"><a href="flregister.html"><img src="images/Button-02.png" alt="" width="100%"
-                                                                       class="btn-reg"></a></div>
+        <div class="col-lg-6 col-sm-12">
+            <a href="flregister.html">
+                <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
+            </a>
+        </div>
     </div>
 
     <!-- info -->
