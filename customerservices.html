@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us</title>
+<title>Customer Services</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 body {
@@ -25,21 +25,35 @@ body footer {
 <![endif]-->
 </head>
 <body>
-<header><img src="images/Imago Gratia.png" width="50%" alt=""/></header>
-<div class="container">
-  <h2>About Us</h2>
-  <table width="100%" border="0">
-  <tbody>
-    <tr>
-      <td>
-      <p><b>Imago Gratia</b> was founded in Semarang at 2017 to connect between the customers and the freelancers through the cyberspace. We build the relations by providing the freelancers to satisfy the customers through the projects did the customer asked. That projects such as pamphlet, poster, etc. That will be such a simplest way to have your work done faster!</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<h5>Check Out Our</h5>
-
-</div>
+<div align="center" class="container">
+<header><a href="index.php"><img src="images/Imago Gratia.png" width="350" alt=""/></a></header>
+  <h2 align="center">Customer Services</h2>
+  <div class="jumbotron">
+        <div class="row text-center">
+          <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"> </div>
+          <div class="text-center col-lg-12"> 
+            <!-- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form -->
+            <form role="form" id="feedbackForm" class="text-center">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <span class="help-block" style="display: none;">Please enter your name.</span></div>
+              <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                <span class="help-block" style="display: none;">Please enter a valid e-mail address.</span></div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message"></textarea>
+                <span class="help-block" style="display: none;">Please enter a message.</span></div>
+              <span class="help-block" style="display: none;">Please enter a the security code.</span>
+              <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg" style=" margin-top: 10px;"> Send</button>
+            </form>
+            <!-- END CONTACT FORM --> 
+          </div>
+        </div>
+      </div>
+    </div>
 <footer style="margin-top:100px" >
     <div class="container">
 <table width="100%" border="0" style="margin-top:40px; margin-bottom:100px">

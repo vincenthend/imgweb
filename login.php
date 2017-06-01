@@ -65,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row" style="margin-top:20px;"><p class="text-center">Doesn't have an account yet? SIGN UP</p></div>
     <div class="row"><p class="text-center">About Us | News | Customer Service</p></div>
     <br>
-    <p class="text-center"</p>
 </div>
 </body>
 </html>
