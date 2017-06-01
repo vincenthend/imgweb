@@ -21,7 +21,7 @@
     <header><a href="index.php"><img src="images/Imago Gratia.png" width="350" alt=""/></a></header>
     <div class="row">
         <div class="col-lg-12">
-            <h2>Registration</h2>
+            <h1>REGISTRATION</h1>
         </div>
     </div>
     <div class="row">
@@ -73,33 +73,27 @@
                     </div>
                 </div>
 
-<div class="form-group">
-					<label class="control-label col-sm-2">Job Preference</label>
-					<div class="col-sm-10 checkbox">
-						<div class="row">
-							<div align="left" class="col-lg-6">
-								<ul class="no-bullet">
-								<li><label><input type="checkbox" name="graphic_design" class="pic_check">
-								<img src="images/Icon-Poster.png" width="75" alt=""/> Poster Design</label></li>
-								<li><label><input type="checkbox" name="illustrator" class="pic_check">
-                                <img src="images/Icon-Logo and Illustration.png" width="75" alt=""/> Logo and Illustration</label></li>
-								<li><label><input type="checkbox" name="photo_editing" class="pic_check">
-                                <img src="images/Icon-Photo Editing.png" width="75" alt=""/> Photo Editing</label></li>
-								</ul>
-							</div>
-							<div align="left" class="col-lg-6">
-								<ul class="no-bullet">
-								<li><label><input type="checkbox" name="video_editing" class="pic_check">
-                                <img src="images/Icon-VideoEditing.png" width="75" alt=""/> Video Editing</label></li>
-								<li><label><input type="checkbox" name="animation" class="pic_check">
-                                <img src="images/Icon-Animation.png" width="75" alt=""/> Animation</label></li>
-								<li><label><input type="checkbox" name="web_design" class="pic_check">
-                                <img src="images/Icon-WebDesign.png" width="75" alt=""/> Web Design</label></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Job Preference</label>
+                    <div class="col-sm-10 checkbox">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="no-bullet">
+                                    <li><label><input type="checkbox" name="graphic_design">Graphic Design</label></li>
+                                    <li><label><input type="checkbox" name="photo_editing">Photo Editing</label></li>
+                                    <li><label><input type="checkbox" name="illustrator">illustrator</label></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="no-bullet">
+                                    <li><label><input type="checkbox" name="video_editing">Video Editing</label></li>
+                                    <li><label><input type="checkbox" name="animation">Animation</label></li>
+                                    <li><label><input type="checkbox" name="web_design">Web Design</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="col-sm-offset-1 col-sm-11"><input type="checkbox"> I agree to the Terms and Conditions
                         agreements <br></label>
@@ -117,5 +111,6 @@
 </body>
 
 <script>
+
 </script>
 </html>

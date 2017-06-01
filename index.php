@@ -55,7 +55,7 @@
         </div>
     </nav>
 
-    <!-- carousell -->
+    <!-- carousel -->
     <div class="row">
         <div class="col-lg-12">
             <div id="carousel1" class="carousel slide" data-ride="carousel">
@@ -73,12 +73,15 @@
                     <div class="item"><img src="images/Carousel3-01.png" alt="Third slide image" class="center-block">
                         <div class="carousel-caption"></div>
                     </div>
-                    <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span
-                                class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span
-                                class="sr-only">Previous</span></a><a class="right carousel-control" href="#carousel1"
-                                                                      role="button" data-slide="next"><span
-                                class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span
-                                class="sr-only">Next</span></a></div>
+                    <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -86,12 +89,12 @@
     <!-- button -->
     <div class="row" style="margin-top:10px;">
         <div class="col-lg-6 col-sm-12">
-            <a href="clientregister.html">
+            <a href="clientregister.php">
                 <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <a href="flregister.html">
+            <a href="flregister.php">
                 <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>
