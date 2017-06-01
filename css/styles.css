@@ -21,3 +21,11 @@ body {
 	transition-duration:0.5s;
 	filter: brightness(150%);
 }
+
+.alert{
+	animation: linearwipe 1s steps(60, end); 
+}
+
+@keyframes linearwipe{
+	from{opacity:0}
+}
