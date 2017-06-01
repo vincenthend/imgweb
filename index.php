@@ -38,7 +38,7 @@
 					<form method="post" action="login.php">
 						<div class="form-group">
 							<label for="user">Email/username</label>
-							<input type="text" name="user" class="form-control">
+							<input type="text" name="username" class="form-control">
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>

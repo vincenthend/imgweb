@@ -1,29 +1,9 @@
 <?php
-	using("connect.php");
-	session_start();
-	
+	include("include/user.php");	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form      
-      $username = mysqli_real_escape_string($db,$_POST['username']);
-      $password = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT id FROM registered natural join user WHERE username = '$username' and password = '$password'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row		
-      if($count == 1) {
-         session_register("username");
-         $_SESSION['login_user'] = $username;
-         
-         header("location: index.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
+		$user = new User($_POST["username"], $_POST["password"]);
+		$logged = $user->user_login();
+	}
 ?>
 
 <!doctype html>
@@ -34,7 +14,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">]
+<link href="css/styles.css" rel="stylesheet" type="text/css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -45,16 +26,44 @@
 
 <body>
 <div class="container">
-<header class="text-center"><img src="images/Imago Gratia.png" width="350" alt=""/></header>
-<br><br><br><input style="width: 200px" name="useremail" type="textfield" id="textfield" placeholder="Username/E-Mail">
-<br><br><input style="width: 200px" name="password" type="password" id="password" placeholder="Password">
-<br><br><br>
-<input type="button" name="login" id="login" value="Login">
-<br>
-<br>
-<br><br>
-<br><p class="text-center">Doesn't have an account yet? SIGN UP</p>
-<br><p class="text-center">About Us | News | Customer Service</p>
+<header class="text-center"><a href="index.php"><img src="images/Imago Gratia.png" width="350" alt=""/></a></header>
+<div class="row">
+	<div class="col-lg-12 text-center"><h1>Log In</h1></div>
+</div>
+<?php
+if(!$logged){
+	echo '<div class="row">';
+	echo '	<div class="col-lg-3"></div>';
+	echo '	<div class="alert alert-danger col-lg-6">';
+	echo '	<b>Login Failed!</b> Username or Password is Invalid';
+	echo '	</div>';
+	echo '	<div class="col-lg-3"></div>';
+	echo '</div>';
+}
+?>
+
+<div class="row">
+	<div class="col-lg-4"></div>
+	<div class="col-lg-4">
+		<form method="post" action="login.php">
+			<div class="form-group">
+    		<label for="username">Username / Email:</label>
+    		<input type="text" class="form-control" id="username" name="username">
+  		</div>
+			<div class="form-group">
+    		<label for="password">Password:</label>
+    		<input type="password" class="form-control" id="password" name="password">
+  		</div>
+			<center>
+			<button type="submit" class="btn btn-success">Log In</button>
+			</center>
+		</form>
+	</div>
+	<div class="col-lg-4"></div>
+</div>
+<div class="row" style="margin-top:20px;"><p class="text-center">Doesn't have an account yet? SIGN UP</p></div>
+<div class="row"><p class="text-center">About Us | News | Customer Service</p></div>
+<br><p class="text-center"</p>
 </div>
 </body>
 </html>
