@@ -111,9 +111,9 @@
                 <div class="row"><img src="images/Menus-05.png" width="25%" alt=""/>
                     <h4 style="color: #F1F2F2;">ABOUT US</h4>
                     <ul class="no-bullet">
-                        <li>About Us</li>
-                        <li>Team</li>
-                        <li>How it Works</li>
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="howitworks.html">How it Works</a></li>
                     </ul>
                 </div>
             </div>
