@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - db_img@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="db_img">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="cdcol"/>
+    <schema id="4" parent="1" name="db_amazon"/>
+    <schema id="5" parent="1" name="db_coba"/>
+    <schema id="6" parent="1" name="db_kekl"/>
+    <schema id="7" parent="1" name="db_prak2"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="phpmyadmin"/>
+    <schema id="12" parent="1" name="test"/>
+    <schema id="13" parent="1" name="webauth"/>
+    <table id="14" parent="2" name="freelancer"/>
+    <table id="15" parent="2" name="job"/>
+    <table id="16" parent="2" name="preference"/>
+    <table id="17" parent="2" name="registered"/>
+    <table id="18" parent="2" name="user"/>
+    <column id="19" parent="14" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="14" name="software_mastery">
+      <Position>2</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <key id="21" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="22" parent="14" name="fk_username">
+      <ColNames>username</ColNames>
+      <RefSchemaName>db_img</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="23" parent="15" name="job_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="15" name="job_name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="15" name="budget">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="15" name="deadline">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="15" name="job_type">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="15" name="milestone">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="15" name="completion">
+      <Position>7</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="15" name="client">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="15" name="freelancer">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="32" parent="15" name="client_idx">
+      <ColNames>client</ColNames>
+    </index>
+    <index id="33" parent="15" name="freelancer_idx">
+      <ColNames>freelancer</ColNames>
+    </index>
+    <key id="34" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>job_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="15" name="fk_client">
+      <ColNames>client</ColNames>
+      <RefSchemaName>db_img</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="15" name="fk_freelancer">
+      <ColNames>freelancer</ColNames>
+      <RefSchemaName>db_img</RefSchemaName>
+      <RefTableName>freelancer</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="37" parent="16" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="16" name="pref">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="39" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username
+pref</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="16" name="fk_pref">
+      <ColNames>username</ColNames>
+      <RefSchemaName>db_img</RefSchemaName>
+      <RefTableName>freelancer</RefTableName>
+      <RefColNames>username</RefColNames>
+    </foreign-key>
+    <column id="41" parent="17" name="email">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="17" name="password">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="43" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>email</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="18" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="18" name="first_name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="18" name="last_name">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="18" name="email">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="18" name="phone">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="49" parent="18" name="email_idx">
+      <ColNames>email</ColNames>
+    </index>
+    <key id="50" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="51" parent="18" name="fk_email">
+      <ColNames>email</ColNames>
+      <RefSchemaName>db_img</RefSchemaName>
+      <RefTableName>registered</RefTableName>
+      <RefColNames>email</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
