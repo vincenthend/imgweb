@@ -1,7 +1,7 @@
 <?php
 include("include/Session.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $logged = $user->user_login($_POST["username"], $_POST["password"]);
+    $logged = user_login($_POST["username"], $_POST["password"]);
 } else {
     $logged = true;
 }

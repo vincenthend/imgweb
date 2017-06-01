@@ -89,12 +89,12 @@
     <!-- button -->
     <div class="row" style="margin-top:10px;">
         <div class="col-lg-6 col-sm-12">
-            <a href="clientregister.html">
+            <a href="clientregister.php">
                 <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <a href="flregister.html">
+            <a href="flregister.php">
                 <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>
