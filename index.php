@@ -63,14 +63,14 @@
                     <li data-target="#carousel1" data-slide-to="0" class="active"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active"><img src="images/Carousel1-01.png" alt="First slide image"
-                                                  class="center-block">
+                    <div class="item active"><a href="aboutus.html"><img src="images/Carousel1-01.png" alt="First slide image"
+                                                  class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
-                    <div class="item"><img src="images/Carousel2-01.png" alt="Second slide image" class="center-block">
+                    <div class="item"><a href="clientregister.html"><img src="images/Carousel2-01.png" alt="Second slide image" class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
-                    <div class="item"><img src="images/Carousel3-01.png" alt="Third slide image" class="center-block">
+                    <div class="item"><a href="showcase.html"><img src="images/Carousel3-01.png" alt="Third slide image" class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
                     <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
@@ -125,7 +125,7 @@
                     <h4 style="color: #F1F2F2;">PROJECTS</h4>
                     <ul class="no-bullet">
                         <li>News</li>
-                        <li>Showcase</li>
+                        <li><a href="showcase.html">Showcase</a></li>
                     </ul>
                 </div>
             </div>
@@ -133,8 +133,8 @@
                 <div class="row"><img src="images/Menus-07.png" width="25%" alt=""/>
                     <h4 style="color: #F1F2F2;">SERVICES</h4>
                     <ul class="no-bullet">
-                        <li>Customer Service</li>
-                        <li>Terms and Conditions</li>
+                        <li><a href="customerservices.html">Customer Services</a></li>
+                        <li><a href="termsnconds.html">Terms and Conditions</a></li>
                     </ul>
                 </div>
             </div>
