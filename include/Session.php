@@ -4,7 +4,7 @@ include("User.php");
 /**
  * Mengembalikan objek user berdasarkan username
  * @param $username User username yang dicari
- * @return Object user jika user ditemukan, null jika tidak
+ * @return User user jika user ditemukan, null jika tidak
  */
 function getUser($username) {
     $db = connect();
@@ -30,6 +30,14 @@ function getUser($username) {
 }
 
 /**
+ * User yang sedang log in
+ * @return User user yang sedang log in
+ */
+function get_current_userdata(){
+    return getUser($_SESSION["username"]);
+}
+
+/**
  * Mengembalikan nilai apakah client sedang log-in.
  * @return bool apakah client sedang log in.
  */
@@ -42,6 +50,7 @@ function is_logged_in() {
 }
 
 /**
+ * Melakukan login.
  * @param $username String username yang akan login
  * @param $password String password dari user
  * @return bool apakah login berhasil

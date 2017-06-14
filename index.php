@@ -1,5 +1,7 @@
 <?php
 include("include/Session.php");
+
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +33,13 @@ include("include/Session.php");
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Find Project</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="user/profile.php">Profile</a></li>
                 <li><a href="#">Create Project</a></li>
                 <li><a href="#">Manage Project</a></li>
             </ul>
             <div class="nav navbar-right" style="margin-right:5px">
 
                 <?php
-                session_start();
                 if (is_logged_in() === FALSE) {
                     echo '
                     <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In
@@ -60,7 +61,7 @@ include("include/Session.php");
                 </div >';
                 } else {
                     $logout = '"user//logout.php"';
-                    echo("Welcome, <b>" . $_SESSION['username'] . "</b>!  ");
+                    echo('Welcome, <a href="user/profile.php" style="color:black"><b>' . $_SESSION['username'] . '</b></a>!  ');
                     echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
                 }
                 ?>
@@ -81,9 +82,9 @@ include("include/Session.php");
                                                                          class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
-                    <div class="item"><a href="user/clientregister.html"><img src="images/Carousel2-01.png"
-                                                                              alt="Second slide image"
-                                                                              class="center-block"></a>
+                    <div class="item"><a href="user/clientregister.php"><img src="images/Carousel2-01.png"
+                                                                             alt="Second slide image"
+                                                                             class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
                     <div class="item"><a href="showcase.html"><img src="images/Carousel3-01.png" alt="Third slide image"
@@ -104,18 +105,24 @@ include("include/Session.php");
     </div>
 
     <!-- button -->
-    <div class="row" style="margin-top:10px;">
-        <div class="col-lg-6 col-sm-12">
-            <a href="user/clientregister.php">
-                <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
-            </a>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-            <a href="user/flregister.php">
-                <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
-            </a>
-        </div>
-    </div>
+    <?php
+
+    if (is_logged_in() === FALSE) {
+        echo '
+            <div class="row" style="margin-top:10px;">
+                <div class="col-lg-6 col-sm-12">
+                    <a href="user/clientregister.php">
+                        <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
+                    </a>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <a href="user/flregister.php">
+                        <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
+                    </a>
+                </div>
+            </div>';
+    }
+    ?>
 
     <!-- info -->
     <div class="row">
@@ -150,8 +157,8 @@ include("include/Session.php");
                 <div class="row"><img src="images/Menus-07.png" width="25%" alt=""/>
                     <h4 style="color: #F1F2F2;">SERVICES</h4>
                     <ul class="no-bullet">
-                        <li><a href="customerservices.html">Customer Services</a></li>
-                        <li><a href="termsnconds.html">Terms and Conditions</a></li>
+                        <li><a href="../customerservices.html">Customer Services</a></li>
+                        <li><a href="../termsnconds.html">Terms and Conditions</a></li>
                     </ul>
                 </div>
             </div>
