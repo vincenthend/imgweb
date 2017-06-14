@@ -4,8 +4,14 @@
 		$user = "root";
 		$password = "";
 		$db = "db_img";
-	
-	  $db = new MySQLi($server,$user,$password,$db);
-		return $db;
+		$port = 3306;
+
+	  $db = new MySQLi($server,$user,$password,$db,$port);
+	  if($db->connect_error){
+	      die("Connection failed: ".$db->connect_errno);
+      }
+      else{
+          return $db;
+      }
 	}
 ?>

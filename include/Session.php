@@ -8,35 +8,25 @@ include("User.php");
  */
 function getUser($username) {
     $db = connect();
-    $sql = "SELECT * FROM user WHERE user = '$username'";
+    $sql = "SELECT * FROM user WHERE username = '$username'";
 
     $result = $db->query($sql);
-
     if ($result->num_rows == 1) {
         $data = $result->fetch_assoc();
 
         //Find role
         $sql = "SELECT username FROM registered NATURAL JOIN freelancer";
         $result = $db->query($sql);
-        if ($result->num_rows == 1) {
-            $data['role'] = "freelance";
-        } else {
-            $data['role'] = "client";
-        }
 
         $user = new User($data);
-        return user;
+
+        $db->close();
+        return $user;
     } else {
+
+        $db->close();
         return null;
     }
-}
-
-/**
- * Mengembalikan object user yang sedang login
- * @return Object user yang sedang login
- */
-function get_current_user() {
-    return getUser($_SESSION["username"]);
 }
 
 /**
@@ -44,36 +34,11 @@ function get_current_user() {
  * @return bool apakah client sedang log in.
  */
 function is_logged_in() {
-    if (getUser($_SESSION["username"]) != null) {
+    if (isset($_SESSION["username"]) != null) {
         return true;
     } else {
         return false;
     }
-}
-
-/**
- * Menambahkan user
- * @param $args array data user
- */
-function add_user($args) {
-    //Connect to database
-    $db = connect();
-
-    //Extract data
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $first_name = $_POST["first_name"];
-    $last_name = $_POST["last_name"];
-    $phone = $_POST["phone"];
-
-    //Insert to registered
-    $sql = "INSERT into registered VALUES ('$email',PASSWORD('$password'))";
-    $db->query($sql);
-
-    //Insert to user
-    $sql = "INSERT into user VALUES ('$username','$first_name','$last_name','$email','$phone')";
-    $db->query($sql);
 }
 
 /**
@@ -102,12 +67,13 @@ function user_login($username, $password) {
         } else {
             $_SESSION['role'] = "client";
         }
-        header("location: index.php");
+        header("location: ../index.php");
 
         $logged_in = true;
     } else {
         $logged_in = false;
     }
+    $db->close();
     return $logged_in;
 }
 
@@ -115,7 +81,15 @@ function user_login($username, $password) {
  * Melakukan logout.
  */
 function user_logout() {
+    session_start();
+
+    session_unset();
     session_destroy();
+    session_write_close();
+    setcookie(session_name(), '', 0, '/');
+
+    session_regenerate_id(true);
+    header("location: ../index.php");
 }
 
 ?>

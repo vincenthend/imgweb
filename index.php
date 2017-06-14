@@ -1,3 +1,6 @@
+<?php
+include("include/Session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,24 +36,34 @@
                 <li><a href="#">Manage Project</a></li>
             </ul>
             <div class="nav navbar-right" style="margin-right:5px">
-                <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In
-                </button>
-                <div class="dropdown-menu" style="padding:10px;">
-                    <form method="post" action="login.php">
-                        <div class="form-group">
-                            <label for="user">Email/username
-                                <input type="text" name="username" class="form-control">
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password
-                                <input type="password" name="password" class="form-control">
-                            </label>
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Log in">
+
+                <?php
+                session_start();
+                if (is_logged_in() === FALSE) {
+                    echo '
+                    <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In
+                    </button>
+                    <div class="dropdown-menu" style = "padding:10px;" >
+                    <form method = "post" action = "user/login.php" >
+                        <div class="form-group" >
+                            <label for="user" > Email / username
+                                <input type = "text" name = "username" class="form-control" >
+                            </label >
+                        </div >
+                        <div class="form-group" >
+                            <label for="password" > Password
+                                <input type = "password" name = "password" class="form-control" >
+                            </label >
+                        </div >
+                        <input type = "submit" class="btn btn-primary" value = "Log in" >
                     </form>
-                </div>
-                <button class="btn btn-danger navbar-btn" type="button">Log Out</button>
+                </div >';
+                } else {
+                    $logout = '"user//logout.php"';
+                    echo("Welcome, <b>" . $_SESSION['username'] . "</b>!  ");
+                    echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
+                }
+                ?>
             </div>
         </div>
     </nav>
@@ -63,14 +76,18 @@
                     <li data-target="#carousel1" data-slide-to="0" class="active"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active"><a href="aboutus.html"><img src="images/Carousel1-01.png" alt="First slide image"
-                                                  class="center-block"></a>
+                    <div class="item active"><a href="aboutus.html"><img src="images/Carousel1-01.png"
+                                                                         alt="First slide image"
+                                                                         class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
-                    <div class="item"><a href="clientregister.html"><img src="images/Carousel2-01.png" alt="Second slide image" class="center-block"></a>
+                    <div class="item"><a href="user/clientregister.html"><img src="images/Carousel2-01.png"
+                                                                              alt="Second slide image"
+                                                                              class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
-                    <div class="item"><a href="showcase.html"><img src="images/Carousel3-01.png" alt="Third slide image" class="center-block"></a>
+                    <div class="item"><a href="showcase.html"><img src="images/Carousel3-01.png" alt="Third slide image"
+                                                                   class="center-block"></a>
                         <div class="carousel-caption"></div>
                     </div>
                     <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
@@ -89,12 +106,12 @@
     <!-- button -->
     <div class="row" style="margin-top:10px;">
         <div class="col-lg-6 col-sm-12">
-            <a href="clientregister.php">
+            <a href="user/clientregister.php">
                 <img src="images/Button-01.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>
         <div class="col-lg-6 col-sm-12">
-            <a href="flregister.php">
+            <a href="user/flregister.php">
                 <img src="images/Button-02.png" alt="" width="100%" class="btn-reg">
             </a>
         </div>

@@ -1,5 +1,5 @@
 <?php
-include("include/Session.php");
+include("../include/Session.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $logged = user_login($_POST["username"], $_POST["password"]);
 } else {
@@ -10,13 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!doctype html>
 <html>
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="images/igfavicon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/igfavicon.png"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../css/styles.css" rel="stylesheet" type="text/css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 <div class="container">
-    <header class="text-center"><a href="index.php"><img src="images/Imago Gratia.png" width="350" alt=""/></a></header>
+    <header class="text-center"><a href="../index.php"><img src="../images/Imago%20Gratia.png" width="350" alt=""/></a></header>
     <div class="row">
         <div class="col-lg-12 text-center"><h1>Log In</h1></div>
     </div>
