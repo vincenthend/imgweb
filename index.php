@@ -148,7 +148,6 @@ session_start();
                 <div class="row"><img src="images/Menus-06.png" width="25%" alt=""/>
                     <h4 style="color: #F1F2F2;">PROJECTS</h4>
                     <ul class="no-bullet">
-                        <li>News</li>
                         <li><a href="showcase.html">Showcase</a></li>
                     </ul>
                 </div>
