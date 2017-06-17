@@ -32,15 +32,23 @@ session_start();
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Find Project</a></li>
-                <li><a href="user/profile.php">Profile</a></li>
-                <li><a href="#">Create Project</a></li>
-                <li><a href="#">Manage Project</a></li>
+                <?php
+                if (isLoggedIn()) {
+                    echo '<li><a href="user/profile.php">Profile</a></li>';
+                }
+                if (isClient()) {
+                    echo '<li><a href="#">Create Project</a></li>';
+                }
+                if(isFreelancer()){
+                    echo '<li><a href="#">Find Project</a></li>';
+                    echo '<li><a href="#">Manage Project</a></li>';
+                }
+                ?>
             </ul>
             <div class="nav navbar-right" style="margin-right:5px">
 
                 <?php
-                if (is_logged_in() === FALSE) {
+                if (isLoggedIn() === FALSE) {
                     echo '
                     <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In
                     </button>
@@ -107,7 +115,7 @@ session_start();
     <!-- button -->
     <?php
 
-    if (is_logged_in() === FALSE) {
+    if (isLoggedIn() === FALSE) {
         echo '
             <div class="row" style="margin-top:10px;">
                 <div class="col-lg-6 col-sm-12">
@@ -156,8 +164,8 @@ session_start();
                 <div class="row"><img src="images/Menus-07.png" width="25%" alt=""/>
                     <h4 style="color: #F1F2F2;">SERVICES</h4>
                     <ul class="no-bullet">
-                        <li><a href="../customerservices.html">Customer Services</a></li>
-                        <li><a href="../termsnconds.html">Terms and Conditions</a></li>
+                        <li><a href="customerservices.html">Customer Services</a></li>
+                        <li><a href="termsnconds.html">Terms and Conditions</a></li>
                     </ul>
                 </div>
             </div>

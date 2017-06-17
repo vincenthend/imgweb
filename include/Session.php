@@ -33,7 +33,7 @@ function getUser($username) {
  * User yang sedang log in
  * @return User user yang sedang log in
  */
-function get_current_userdata(){
+function getCurrentUser() {
     return getUser($_SESSION["username"]);
 }
 
@@ -41,12 +41,13 @@ function get_current_userdata(){
  * Mengembalikan nilai apakah client sedang log-in.
  * @return bool apakah client sedang log in.
  */
-function is_logged_in() {
-    if (isset($_SESSION["username"]) != null) {
-        return true;
-    } else {
-        return false;
+function isLoggedIn() {
+    if (isset($_SESSION["username"])) {
+        if (getUser($_SESSION["username"]) != null) {
+            return true;
+        }
     }
+    return false;
 }
 
 /**
@@ -55,7 +56,7 @@ function is_logged_in() {
  * @param $password String password dari user
  * @return bool apakah login berhasil
  */
-function user_login($username, $password) {
+function userLogin($username, $password) {
     $db = connect();
     session_start();
     $username = $db->real_escape_string($username);
@@ -89,7 +90,7 @@ function user_login($username, $password) {
 /**
  * Melakukan logout.
  */
-function user_logout() {
+function userLogout() {
     session_start();
 
     session_unset();
@@ -99,6 +100,32 @@ function user_logout() {
 
     session_regenerate_id(true);
     header("location: ../index.php");
+}
+
+/**
+ * Menghasilkan true jika user yang sedang log in adalah client.
+ * @return bool true jika user adalah client.
+ */
+function isClient() {
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] == "client"){
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Menghasilkan true jika user yang sedang log in adalah freelancer.
+ * @return bool true jika user adalah freelancer.
+ */
+function isFreelancer() {
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] == "freelance"){
+            return true;
+        }
+    }
+    return false;
 }
 
 ?>

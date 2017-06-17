@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <?php
-    include("../include/Session.php");
-    session_start();
-    if(is_logged_in() === FALSE){
-        header("location: ../index.php");
-    }
-    else{
-        $user = get_current_userdata();
-    }
+include("../include/Session.php");
+session_start();
+if (isLoggedIn() === FALSE) {
+    header("location: login.php");
+} else {
+    $user = getCurrentUser();
+}
 
 ?>
 <html lang="en">
@@ -31,47 +30,87 @@
 </head>
 <body>
 <div class="container">
-    <hr>
-    <div class="row">
-        <div class="col-xs-6">
-            <h1><?php echo $user->getFirstName()." ".$user->getLastName(); ?></h1>
-        </div>
-        <div class="row">
-        <div class="col-xs-6">
-        <img align="right" src="../images/115X115.gif" alt="...">    
-        </div>
-    </div><br>
-  <div class="col-xs-6 col-md-12">
-    <div class="progress">
-    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-    aria-valuemax="100" style="width: 85%"> Level Point (from data)</div></div></div>
-    <hr>
-    <hr>
-    <div class="row">
-        <div class="col-xs-7">
-            <div class="media">
-                <div class="media-left"><a href="#">  </a></div>
-                <div class="media-body">
-                    <h2 class="media-heading">About Me</h2>
-                    Editable content
-                </div>
+    <!-- header -->
+    <div class="page-header" style="margin-top:0"><img src="../images/Imago Gratia.png" width="350" alt=""/></div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="../index.php">Home</a></li>
+                <?php
+                if (isLoggedIn()) {
+                    echo '<li><a href="profile.php">Profile</a></li>';
+                }
+                if (isClient()) {
+                    echo '<li><a href="#">Create Project</a></li>';
+                }
+                if (isFreelancer()) {
+                    echo '<li><a href="#">Find Project</a></li>';
+                    echo '<li><a href="#">Manage Project</a></li>';
+                }
+                ?>
+            </ul>
+            <div class="nav navbar-right" style="margin-right:5px">
+
+                <?php
+                $logout = '"user//logout.php"';
+                echo('Welcome, <a href="user/profile.php" style="color:black"><b>' . $_SESSION['username'] . '</b></a>!  ');
+                echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
+                ?>
             </div>
         </div>
-        
-        <div class="col-xs-5 well">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : <?php echo $user->getPhone(); ?></h4>
-                </div>
-                <div class="col-lg-6">
-                    <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> : <?php echo $user->getEmail(); ?></h4>
+    </nav>
+
+
+    <!-- content -->
+    <hr>
+    <div class="row">
+        <div class="col-xs-6">
+            <h1><?php echo $user->getFirstName() . " " . $user->getLastName(); ?></h1>
+        </div>
+
+        <div class="col-xs-6">
+            <img align="right" src="../images/115X115.gif" alt="...">
+        </div>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="col-xs-12 col-md-12">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                     aria-valuemax="100" style="width: 85%"> Level Point (from data)
                 </div>
             </div>
         </div>
     </div>
     <hr>
     <div class="row">
-      <div class="col-sm-8 col-lg-7">
+        <div class="col-xs-7">
+            <div class="media">
+                <div class="media-left"><a href="#"> </a></div>
+                <div class="media-body">
+                    <h2 class="media-heading">About Me</h2>
+                    Editable content
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-5 well">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4><span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                        : <?php echo $user->getPhone(); ?></h4>
+                </div>
+                <div class="col-lg-6">
+                    <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                        : <?php echo $user->getEmail(); ?></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8 col-lg-7">
             <h2>History</h2>
             <hr>
             <div class="row">
@@ -82,8 +121,10 @@
                 </div>
             </div>
             <h4><span class="label label-default">Bachelors</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit
-                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
+                fugit
+                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
+                distinctio
                 nihil dignissimos esse!</p>
             <div class="row">
                 <div class="col-xs-6">
@@ -95,8 +136,10 @@
                 </div>
             </div>
             <h4><span class="label label-default">Masters</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit
-                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
+                fugit
+                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
+                distinctio
                 nihil dignissimos esse!</p>
         </div>
         <div class="col-sm-4 col-lg-5">
@@ -104,19 +147,22 @@
             <hr>
             <!-- Green Progress Bar -->
             <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 85%"> POSTER DESIGN
                 </div>
             </div>
             <!-- Blue Progress Bar -->
             <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 80%"> LOGO AND ILLUSTRATION
                 </div>
             </div>
             <!-- Yellow Progress Bar -->
             <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 70%"> PHOTO EDITING
                 </div>
             </div>
@@ -127,17 +173,20 @@
                 </div>
             </div>
             <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0"
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="55"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 55%"> ANIMATION
                 </div>
             </div>
             <div class="progress">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 50%"> WEB DESIGN
                 </div>
             </div>
             <div class="progress">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50"
+                     aria-valuemin="0"
                      aria-valuemax="100" style="width: 50%"> OVERALL
                 </div>
             </div>

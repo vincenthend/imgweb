@@ -1,7 +1,7 @@
 <?php
 include("../include/Session.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $logged = user_login($_POST["username"], $_POST["password"]);
+    $logged = userLogin($_POST["username"], $_POST["password"]);
 } else {
     $logged = true;
 }
@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 <div class="container">
-    <header class="text-center"><a href="../index.php"><img src="../images/Imago%20Gratia.png" width="350" alt=""/></a></header>
+    <header class="text-center"><a href="../index.php"><img src="../images/Imago%20Gratia.png" width="350" alt=""/></a>
+    </header>
     <div class="row">
         <div class="col-lg-12 text-center"><h1>Log In</h1></div>
     </div>

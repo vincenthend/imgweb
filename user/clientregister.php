@@ -8,8 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $freelancer = new User($_POST);
     $freelancer->addUser();
 
+    //Redirect
     header("location: ../index.php");
 }
+
 ?>
 
 <!doctype html>
