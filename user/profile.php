@@ -87,7 +87,7 @@ if (isLoggedIn() === FALSE) {
     <div class="row">
         <div class="col-xs-7">
             <div class="media">
-                <div class="media-left"><a href="#"> </a></div>
+                <div class="media-left"><img align="right" src="../images/115X115.gif" alt="..."></div>
                 <div class="media-body">
                     <h2 class="media-heading">About Me</h2>
                     Editable content
@@ -120,7 +120,7 @@ if (isLoggedIn() === FALSE) {
                         2002 - Dec 2006</h4>
                 </div>
             </div>
-            <h4><span class="label label-default">Bachelors</span></h4>
+            <h4><span class="label label-default">Type Job</span></h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
                 fugit
                 deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
@@ -135,7 +135,7 @@ if (isLoggedIn() === FALSE) {
                         2006 - Dec 2008</h4>
                 </div>
             </div>
-            <h4><span class="label label-default">Masters</span></h4>
+            <h4><span class="label label-default">Type Job</span></h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
                 fugit
                 deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
@@ -145,54 +145,45 @@ if (isLoggedIn() === FALSE) {
         <div class="col-sm-4 col-lg-5">
             <h2>Progress</h2>
             <hr>
-            <!-- Green Progress Bar -->
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 85%"> POSTER DESIGN
-                </div>
-            </div>
-            <!-- Blue Progress Bar -->
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 80%"> LOGO AND ILLUSTRATION
-                </div>
-            </div>
-            <!-- Yellow Progress Bar -->
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 70%"> PHOTO EDITING
-                </div>
-            </div>
-            <!-- Red Progress Bar -->
-            <div class="progress">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 60%"> VIDEO EDITING
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="55"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 55%"> ANIMATION
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 50%"> WEB DESIGN
-                </div>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width: 50%"> OVERALL
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-4 col-lg-5">
+        <div class="col-sm-4"><img src="../images/Icon-Poster.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">POSTER DESIGN</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
         </div>
-    </div>
-    <hr>
+      <div class="col-sm-4 col-lg-5">
+        <div class="col-sm-4"><img src="../images/Icon-Logo and Illustration.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">LOGO AND ILL</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
+      </div>
+       <div class="col-sm-4 col-lg-5">
+        <div class="col-sm-4"><img src="../images/Icon-Photo Editing.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">PHOTO EDITING</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
+      </div>
+       <div class="col-sm-4 col-lg-5">
+        <div class="col-sm-4"><img src="../images/Icon-VideoEditing.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">VIDEO EDITING</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
+      </div>
+       <div class="col-sm-4 col-lg-5">
+        <div class="col-sm-4"><img src="../images/Icon-Animation.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">ANIMATION</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
+      </div>
+       <div class="col-sm-4 col-lg-5"> 
+        <div class="col-sm-4"><img src="../images/Icon-WebDesign.png" alt="" width="80" height="80"/></div>
+        <div class="col-xs-8">WEB DESIGN</div>
+        <div class="col-xs-8">Rating: (data)</div>
+        <div class="col-xs-8">Completed: (data)</div>
+      </div>
+  </div>
+<hr>
 </div>
 <hr>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
