@@ -1,5 +1,10 @@
 <?php
-include("../include/Session.php");
+include("../include/Functions.php");
+session_start();
+if (isLoggedIn() === TRUE) {
+    header("location: index.php");
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $logged = userLogin($_POST["username"], $_POST["password"]);
 } else {

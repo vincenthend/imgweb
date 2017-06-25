@@ -70,7 +70,7 @@ function userLogin($username, $password) {
         $_SESSION['username'] = $result->fetch_assoc()["username"];
 
         //Find role
-        $sql = "SELECT username FROM registered NATURAL JOIN freelancer";
+        $sql = "SELECT username FROM user NATURAL JOIN freelancer WHERE username ='" . $_SESSION['username']."'";
         $result = $db->query($sql);
         if ($result->num_rows == 1) {
             $_SESSION['role'] = "freelance";
@@ -108,7 +108,7 @@ function userLogout() {
  */
 function isClient() {
     if (isset($_SESSION['role'])) {
-        if ($_SESSION['role'] == "client"){
+        if ($_SESSION['role'] == "client") {
             return true;
         }
     }
@@ -121,7 +121,7 @@ function isClient() {
  */
 function isFreelancer() {
     if (isset($_SESSION['role'])) {
-        if ($_SESSION['role'] == "freelance"){
+        if ($_SESSION['role'] == "freelance") {
             return true;
         }
     }

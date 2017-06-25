@@ -1,7 +1,9 @@
 <?php
-include("include/Session.php");
-
+include("include/Functions.php");
 session_start();
+if (isLoggedIn()) {
+    $user = getCurrentUser();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,55 +30,7 @@ session_start();
     <div class="page-header" style="margin-top:0"><img src="images/Imago Gratia.png" width="350" alt=""/></div>
 
     <!-- navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <?php
-                if (isLoggedIn()) {
-                    echo '<li><a href="user/profile.php">Profile</a></li>';
-                }
-                if (isClient()) {
-                    echo '<li><a href="#">Create Project</a></li>';
-                }
-                if(isFreelancer()){
-                    echo '<li><a href="#">Find Project</a></li>';
-                    echo '<li><a href="#">Manage Project</a></li>';
-                }
-                ?>
-            </ul>
-            <div class="nav navbar-right" style="margin-right:5px">
-
-                <?php
-                if (isLoggedIn() === FALSE) {
-                    echo '
-                    <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">Log In
-                    </button>
-                    <div class="dropdown-menu" style = "padding:10px;" >
-                    <form method = "post" action = "user/login.php" >
-                        <div class="form-group" >
-                            <label for="user" > Email / username
-                                <input type = "text" name = "username" class="form-control" >
-                            </label >
-                        </div >
-                        <div class="form-group" >
-                            <label for="password" > Password
-                                <input type = "password" name = "password" class="form-control" >
-                            </label >
-                        </div >
-                        <input type = "submit" class="btn btn-primary" value = "Log in" >
-                    </form>
-                </div >';
-                } else {
-                    $logout = '"user//logout.php"';
-                    echo('Welcome, <a href="user/profile.php" style="color:black"><b>' . $_SESSION['username'] . '</b></a>!  ');
-                    echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
-                }
-                ?>
-            </div>
-        </div>
-    </nav>
-
+    <?php createNavbar(); ?>
     <!-- carousel -->
     <div class="row">
         <div class="col-lg-12">

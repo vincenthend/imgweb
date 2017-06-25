@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-include("../include/Session.php");
+include("../include/Functions.php");
 session_start();
 if (isLoggedIn() === FALSE) {
-    header("location: login.php");
+    header("location: user/login.php");
 } else {
     $user = getCurrentUser();
 }
@@ -34,34 +34,7 @@ if (isLoggedIn() === FALSE) {
     <div class="page-header" style="margin-top:0"><img src="../images/Imago Gratia.png" width="350" alt=""/></div>
 
     <!-- navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="../index.php">Home</a></li>
-                <?php
-                if (isLoggedIn()) {
-                    echo '<li><a href="profile.php">Profile</a></li>';
-                }
-                if (isClient()) {
-                    echo '<li><a href="#">Create Project</a></li>';
-                }
-                if (isFreelancer()) {
-                    echo '<li><a href="#">Find Project</a></li>';
-                    echo '<li><a href="#">Manage Project</a></li>';
-                }
-                ?>
-            </ul>
-            <div class="nav navbar-right" style="margin-right:5px">
-
-                <?php
-                $logout = '"user//logout.php"';
-                echo('Welcome, <a href="user/profile.php" style="color:black"><b>' . $_SESSION['username'] . '</b></a>!  ');
-                echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
-                ?>
-            </div>
-        </div>
-    </nav>
-
+    <?php createNavbar(); ?>
 
     <!-- content -->
     <hr>
