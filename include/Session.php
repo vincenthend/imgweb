@@ -1,37 +1,43 @@
 <?php
-include("User.php");
+include("Freelancer.php");
 
+/////////////////////
+// USER MANAGEMENT //
+/////////////////////
 /**
  * Mengembalikan objek user berdasarkan username
  * @param $username User username yang dicari
- * @return User user jika user ditemukan, null jika tidak
+ * @return User|Freelancer user jika user ditemukan, null jika tidak
  */
 function getUser($username) {
     $db = connect();
-    $sql = "SELECT * FROM user WHERE username = '$username'";
+    $sql = "SELECT * FROM registered NATURAL JOIN user NATURAL JOIN freelancer WHERE username = '$username'";
+    $data = $db->query($sql);
 
-    $result = $db->query($sql);
-    if ($result->num_rows == 1) {
-        $data = $result->fetch_assoc();
-
-        //Find role
-        $sql = "SELECT username FROM registered NATURAL JOIN freelancer";
-        $result = $db->query($sql);
-
-        $user = new User($data);
-
-        $db->close();
-        return $user;
-    } else {
-
-        $db->close();
-        return null;
+    //is freelancer
+    if($data->num_rows == 1){
+        $data = $data->fetch_assoc();
+        $user = new Freelancer($data);
     }
+    else{
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        $data = $db->query($sql);
+
+        if($data->num_rows == 1){
+            $data = $data->fetch_assoc();
+            $user = new User($data);
+        }
+        else{
+            $user = null;
+        }
+    }
+    $db->close();
+    return $user;
 }
 
 /**
- * User yang sedang log in
- * @return User user yang sedang log in
+ * User yang sedang log in.
+ * @return User|Freelancer user yang sedang log in
  */
 function getCurrentUser() {
     return getUser($_SESSION["username"]);
@@ -58,10 +64,8 @@ function isLoggedIn() {
  */
 function userLogin($username, $password) {
     $db = connect();
-    session_start();
     $username = $db->real_escape_string($username);
     $password = $db->real_escape_string($password);
-
     $sql = "SELECT username FROM registered natural join user WHERE ((username = '$username' or email='$username') and password = PASSWORD('$password'))";
     $result = $db->query($sql);
 
@@ -127,5 +131,9 @@ function isFreelancer() {
     }
     return false;
 }
+
+////////////////////
+// JOB MANAGEMENT //
+////////////////////
 
 ?>

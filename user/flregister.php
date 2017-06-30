@@ -1,15 +1,17 @@
 <?php
-    include("../include/Freelancer.php");
+include("../include/Freelancer.php");
+if(isLoggedIn()){
+    header("location: ".rootURL."index.php");
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Validation
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        //Validation
+    //Send data
+    $freelancer = new Freelancer($_POST);
+    $freelancer->addUser();
 
-        //Send data
-        $freelancer = new Freelancer($_POST);
-        $freelancer->addUser();
-
-        header("location: ../index.php");
-    }
+    header("location: ".rootURL."index.php");
+}
 ?>
 
 <!doctype html>
@@ -79,7 +81,8 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">Contacts</label>
                     <div class="col-sm-5">
-                        <input class="form-control" type="email" ng-model="email" name="email" placeholder="E-Mail" required>
+                        <input class="form-control" type="email" ng-model="email" name="email" placeholder="E-Mail"
+                               required>
                     </div>
                     <div class="col-sm-5">
                         <input class="form-control" type="number" ng-model="phone" name="phone"
@@ -102,21 +105,27 @@
                             <div align="left" class="col-lg-6">
                                 <ul class="no-bullet">
                                     <li><label><input type="checkbox" name="graphic_design" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-Poster.png" width="75" alt=""/> Poster Design</label></li>
+                                            <img class="pic_check" src="../images/Icon-Poster.png" width="75" alt=""/>
+                                            Poster Design</label></li>
                                     <li><label><input type="checkbox" name="illustrator" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-Logo%20and%20Illustration.png" width="75" alt=""/> Logo and Illustration</label></li>
+                                            <img class="pic_check" src="../images/Icon-Logo%20and%20Illustration.png"
+                                                 width="75" alt=""/> Logo and Illustration</label></li>
                                     <li><label><input type="checkbox" name="photo_editing" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-Photo%20Editing.png" width="75" alt=""/> Photo Editing</label></li>
+                                            <img class="pic_check" src="../images/Icon-Photo%20Editing.png" width="75"
+                                                 alt=""/> Photo Editing</label></li>
                                 </ul>
                             </div>
                             <div align="left" class="col-lg-6">
                                 <ul class="no-bullet">
                                     <li><label><input type="checkbox" name="video_editing" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-VideoEditing.png" width="75" alt=""/> Video Editing</label></li>
+                                            <img class="pic_check" src="../images/Icon-VideoEditing.png" width="75"
+                                                 alt=""/> Video Editing</label></li>
                                     <li><label><input type="checkbox" name="animation" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-Animation.png" width="75" alt=""/> Animation</label></li>
+                                            <img class="pic_check" src="../images/Icon-Animation.png" width="75"
+                                                 alt=""/> Animation</label></li>
                                     <li><label><input type="checkbox" name="web_design" class="radio_check">
-                                            <img class="pic_check" src="../images/Icon-WebDesign.png" width="75" alt=""/> Web Design</label></li>
+                                            <img class="pic_check" src="../images/Icon-WebDesign.png" width="75"
+                                                 alt=""/> Web Design</label></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <?php
 include("../include/Functions.php");
+
 session_start();
-if (isLoggedIn() === FALSE) {
-    header("location: user/login.php");
+if (isFreelancer() === FALSE) {
+    header("location: ".rootURL."user/login.php");
 } else {
     $user = getCurrentUser();
 }
@@ -50,8 +51,8 @@ if (isLoggedIn() === FALSE) {
     <div class="row" style="margin-top:10px;">
         <div class="col-xs-12 col-md-12">
             <div class="progress">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                     aria-valuemax="100" style="width: 85%"> Level Point (from data)
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=<?php echo ($user->getEXP()*100/$user->getNext()); ?>  aria-valuemin="0"
+                     aria-valuemax="100" style="width: <?php echo ($user->getEXP()*100)/$user->getNext(); ?>%"> <?php echo 'Level '.$user->getLevel(); ?>
                 </div>
             </div>
         </div>
@@ -83,80 +84,90 @@ if (isLoggedIn() === FALSE) {
     </div>
     <hr>
     <div class="row">
-        <div class="col-sm-8 col-lg-7">
+        <!-- History Column -->
+        <div class="col-sm-12 col-lg-7">
             <h2>History</h2>
             <hr>
-            <div class="row">
-                <div class="col-xs-6"><h4>JOB I</h4></div>
-                <div class="col-xs-6">
-                    <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Jan
-                        2002 - Dec 2006</h4>
-                </div>
-            </div>
-            <h4><span class="label label-default">Type Job</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
-                fugit
-                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
-                distinctio
-                nihil dignissimos esse!</p>
-            <div class="row">
-                <div class="col-xs-6">
-                    <h4>JOB II</h4>
-                </div>
-                <div class="col-xs-6">
-                    <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Jan
-                        2006 - Dec 2008</h4>
-                </div>
-            </div>
-            <h4><span class="label label-default">Type Job</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam
-                fugit
-                deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione
-                distinctio
-                nihil dignissimos esse!</p>
+            <?php
+            //Prints according to history
+            $sql = 'SELECT * FROM job WHERE freelancer = "' . $user->username . '"';
+            $result = getResultFromSql($sql);
+            if ($result->num_rows == 0) {
+                echo '<i style="color:#999">Belum ada job yang diambil</i>';
+            } else {
+                while ($resultArray = $result->fetch_assoc()) { ?>
+                    <div class="row">
+                        <div class="col-xs-6"><h4><?php echo $resultArray['job_name'] ?></h4></div>
+                        <div class="col-xs-6">
+                            <h4 class="text-right"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                Jan 2002 - Dec 2006</h4>
+                        </div>
+                    </div>
+                    <span class="label label-default"><?php echo $resultArray['job_type'] ?></span>
+                    <p><?php echo $resultArray['job_desc'] ?></p>
+                    <?php
+                }
+            }
+            ?>
+
         </div>
-        <div class="col-sm-4 col-lg-5">
+        <!-- Progress Column -->
+        <div class="col-sm-12 col-lg-5">
             <h2>Progress</h2>
             <hr>
-      </div>
-      <div class="col-sm-4 col-lg-5">
-        <div class="col-sm-4"><img src="../images/Icon-Poster.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">POSTER DESIGN</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-Poster.png" alt="" width="80" height="80"/></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">POSTER DESIGN</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-Logo and Illustration.png" alt="" width="80"
+                                           height="80"/>
+                </div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">LOGO AND ILLUSTRATION</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-Photo Editing.png" alt="" width="80" height="80"/></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">PHOTO EDITING</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-VideoEditing.png" alt="" width="80" height="80"/></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">VIDEO EDITING</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-Animation.png" alt="" width="80" height="80"/></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">ANIMATION</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-2"><img src="../images/Icon-WebDesign.png" alt="" width="80" height="80"/></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12 job-category-bold">WEB DESIGN</div>
+                    <div class="col-sm-12">Rating: (data)</div>
+                    <div class="col-sm-12">Completed: (data)</div>
+                </div>
+            </div>
         </div>
-      <div class="col-sm-4 col-lg-5">
-        <div class="col-sm-4"><img src="../images/Icon-Logo and Illustration.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">LOGO AND ILL</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
-      </div>
-       <div class="col-sm-4 col-lg-5">
-        <div class="col-sm-4"><img src="../images/Icon-Photo Editing.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">PHOTO EDITING</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
-      </div>
-       <div class="col-sm-4 col-lg-5">
-        <div class="col-sm-4"><img src="../images/Icon-VideoEditing.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">VIDEO EDITING</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
-      </div>
-       <div class="col-sm-4 col-lg-5">
-        <div class="col-sm-4"><img src="../images/Icon-Animation.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">ANIMATION</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
-      </div>
-       <div class="col-sm-4 col-lg-5"> 
-        <div class="col-sm-4"><img src="../images/Icon-WebDesign.png" alt="" width="80" height="80"/></div>
-        <div class="col-xs-8">WEB DESIGN</div>
-        <div class="col-xs-8">Rating: (data)</div>
-        <div class="col-xs-8">Completed: (data)</div>
-      </div>
-  </div>
-<hr>
+    </div>
+    <hr>
 </div>
 <hr>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

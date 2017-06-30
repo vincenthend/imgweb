@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
-include("../include/Session.php");
+include("../include/Functions.php");
 session_start();
 if (isLoggedIn() === FALSE) {
-    header("location: login.php");
+    header("location: ".rootURL."user/login.php");
 } else {
     $user = getCurrentUser();
 }
@@ -34,71 +34,47 @@ if (isLoggedIn() === FALSE) {
     <div class="page-header" style="margin-top:0"><img src="../images/Imago Gratia.png" width="350" alt=""/></div>
 
     <!-- navbar -->
-<nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li><a href="../index.php">Home</a></li>
-                <?php
-                if (isLoggedIn()) {
-                    echo '<li><a href="profile.php">Profile</a></li>';
-                }
-                if (isClient()) {
-                    echo '<li><a href="#">Create Project</a></li>';
-                }
-                if (isFreelancer()) {
-                    echo '<li><a href="#">Find Project</a></li>';
-                    echo '<li><a href="#">Manage Project</a></li>';
-                }
-                ?>
-            </ul>
-            <div class="nav navbar-right" style="margin-right:5px">
-
-                <?php
-                $logout = '"user//logout.php"';
-                echo('Welcome, <a href="user/profile.php" style="color:black"><b>' . $_SESSION['username'] . '</b></a>!  ');
-                echo('<a href="user/logout.php"><button class="btn btn-danger navbar-btn" type="button"> Log Out </button ></a>');
-                ?>
-            </div>
-        </div>
-    </nav>
-
+    <?php createNavbar(); ?>
 
     <!-- content -->
-<nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-<div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="defaultNavbar1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Poster Design<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Logo Illust.</a></li>
-            <li><a href="#">Photo Edit.</a></li>
-            <li><a href="#">Video Edit.</a></li>
-            <li><a href="#">Animation</a></li>
-            <li><a href="#">Web Design</a></li>
-          </ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#defaultNavbar1" aria-expanded="false"><span
+                            class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                            class="icon-bar"></span><span class="icon-bar"></span></button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="defaultNavbar1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Poster Design<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Logo Illust.</a></li>
+                        <li><a href="#">Photo Edit.</a></li>
+                        <li><a href="#">Video Edit.</a></li>
+                        <li><a href="#">Animation</a></li>
+                        <li><a href="#">Web Design</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+    </nav>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail"><img src="../images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
+                <div align="center" class="caption">
+                    <h4>Project Name</h4>
+                    <p>Project Description (some words)</p>
+                    <p>Budget</p>
+                    <p>Deadline</p>
+                </div>
+            </div>
         </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-</nav>
-<div class="row">
-  <div class="col-md-4">
-    <div class="thumbnail"><img src="../images/Thumbnail_Placeholder.png" alt="Thumbnail Image 1">
-      <div align="center" class="caption">
-        <h4>Project Name</h4>
-        <p>Project Description (some words)</p>
-        <p>Budget</p>
-        <p>Deadline</p>
-      </div>
     </div>
-  </div>
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../js/jquery-1.11.3.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.js"></script>
 </body>
 </html>

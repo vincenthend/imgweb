@@ -32,15 +32,15 @@ if (isLoggedIn() === FALSE) {
 <div class="container">
     <!-- header -->
     <div class="page-header" style="margin-top:0"><img src="../images/Imago Gratia.png" width="350" alt=""/></div>
-	<div color="#f7f7f7">
-    <h4>Project Name</h4>
-    <p>Description</p>
-        
+    <div color="#f7f7f7">
+        <h4>Project Name</h4>
+        <p>Description</p>
+
     </div>
-    
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../js/jquery-1.11.3.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../js/bootstrap.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.js"></script>
 </body>
 </html>

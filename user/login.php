@@ -2,7 +2,7 @@
 include("../include/Functions.php");
 session_start();
 if (isLoggedIn() === TRUE) {
-    header("location: index.php");
+    header("location: ".rootURL."user/index.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

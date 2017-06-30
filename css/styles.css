@@ -2,7 +2,6 @@
 
 body {
 	background-color: #F5F5F5;
-
 }
 
 .info {
@@ -67,4 +66,14 @@ a:active {
 .radio_check:checked + .pic_check {
     transition-duration: 0.2s;
     filter: brightness(100%);
+}
+
+
+/* profile */
+.job-category-bold{
+    font-weight: bold;
+}
+
+.job-category-pic{
+    text-align: right;
 }

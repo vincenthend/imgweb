@@ -1,15 +1,18 @@
 <?php
-include("../include/User.php");
+include("../include/Functions.php");
 
+if(isLoggedIn()){
+    header("location: ".rootURL."index.php");
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Validation
 
     //Send data
-    $freelancer = new User($_POST);
-    $freelancer->addUser();
+    $client = new User($_POST);
+    $client->addUser();
 
     //Redirect
-    header("location: ../index.php");
+    header("location: ".rootURL."index.php");
 }
 
 ?>
